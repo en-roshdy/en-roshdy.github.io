@@ -8,7 +8,7 @@ class PortfolioData {
     tagline: 'Architecting high-performance mobile apps & leading engineering teams to build 60+ production applications.',
     phone: '+201061071897',
     email: 'en.muhamed.roshdy@gmail.com',
-    linkedinUrl: 'https://linkedin.com/in/muhamed-roshdy-placeholder',
+    linkedinUrl: 'https://www.linkedin.com/in/en-muhamed-roshdy',
     githubUrl: 'https://github.com/en-roshdy',
     cvAssetPath: 'cv.pdf',
   );
