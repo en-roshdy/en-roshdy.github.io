@@ -2,6 +2,8 @@
 
 Single-page responsive Flutter Web portfolio for **Muhamed Roshdy Al-Abd** (Senior Mobile Developer | Native Android & Flutter | Mobile Team Lead).
 
+🌐 **Live Portfolio URL**: [https://en-roshdy.github.io/](https://en-roshdy.github.io/)
+
 ---
 
 ## 🌟 Features
@@ -65,37 +67,22 @@ lib/
 
 ---
 
-## 📦 Production Web Build & Deployment
+## 🌐 Automatic Deployment (GitHub Actions)
 
-### Build Release Bundle
+This project uses **GitHub Actions** for continuous deployment to **GitHub Pages**.
 
-```bash
-flutter build web --release
-```
+- **Live Site**: [https://en-roshdy.github.io/](https://en-roshdy.github.io/)
+- **Workflow Configuration**: `.github/workflows/deploy.yml`
+- **Triggers**: Automatically builds and deploys on every push to the `main` branch or via manual trigger (`workflow_dispatch`).
+- **Build Command**:
+  ```bash
+  flutter build web --release --base-href "/"
+  ```
 
-The compiled release artifacts will be located in `build/web/`.
-
-### Deployment Options
-
-#### 1. GitHub Pages
-1. Push your project to a GitHub repository.
-2. Deploy the contents of `build/web/` to the `gh-pages` branch using `gh-pages` CLI or GitHub Actions:
-   ```bash
-   npx gh-pages -d build/web
-   ```
-
-#### 2. Firebase Hosting
-1. Install Firebase CLI: `npm install -g firebase-tools`
-2. Initialize Firebase Hosting:
-   ```bash
-   firebase init hosting
-   ```
-   - Set public directory to `build/web`
-   - Configure as single-page app: `Yes`
-3. Deploy:
-   ```bash
-   firebase deploy --only hosting
-   ```
+### Required Repository Settings
+To enable GitHub Actions deployment:
+1. Go to your GitHub repository: **Settings > Pages**.
+2. Under **Build and deployment > Source**, select **GitHub Actions**.
 
 ---
 
