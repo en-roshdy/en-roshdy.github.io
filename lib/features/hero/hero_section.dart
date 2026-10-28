@@ -191,7 +191,7 @@ class HeroSection extends StatelessWidget {
             ),
             clipBehavior: Clip.antiAlias,
             child: Image.asset(
-              'assets/my_photo.png',
+              'assets/my_photo.jpg',
               fit: BoxFit.cover,
               alignment: Alignment.topCenter,
               errorBuilder: (context, error, stackTrace) {

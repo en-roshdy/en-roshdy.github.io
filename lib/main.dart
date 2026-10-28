@@ -76,7 +76,6 @@ class _PortfolioHomePageState extends State<PortfolioHomePage> {
   @override
   void initState() {
     super.initState();
-    // Render content immediately when engine boots
     _isLoading = false;
   }
 
@@ -203,27 +202,59 @@ class _PortfolioHomePageState extends State<PortfolioHomePage> {
         switchOutCurve: Curves.easeOut,
         child: _isLoading
             ? const ShimmerSkeletonView(key: ValueKey('shimmer'))
-            : SingleChildScrollView(
+            : ListView.builder(
                 key: const ValueKey('content'),
                 controller: _scrollController,
-                child: Column(
-                  children: [
-                    Container(
-                      key: _heroKey,
-                      child: HeroSection(
-                        onContactTap: () => _scrollToSection('Contact'),
-                      ),
-                    ),
-                    Container(key: _aboutKey, child: const AboutSection()),
-                    Container(key: _skillsKey, child: const SkillsSection()),
-                    Container(key: _experienceKey, child: const ExperienceSection()),
-                    Container(key: _achievementsKey, child: const AchievementsSection()),
-                    Container(key: _projectsKey, child: const ProjectsSection()),
-                    const EducationSection(),
-                    Container(key: _contactKey, child: const ContactSection()),
-                    Footer(onBackToTop: () => _scrollToSection('Hero')),
-                  ],
-                ),
+                itemCount: 9,
+                itemBuilder: (context, index) {
+                  switch (index) {
+                    case 0:
+                      return Container(
+                        key: _heroKey,
+                        child: HeroSection(
+                          onContactTap: () => _scrollToSection('Contact'),
+                        ),
+                      );
+                    case 1:
+                      return Container(
+                        key: _aboutKey,
+                        child: const AboutSection(),
+                      );
+                    case 2:
+                      return Container(
+                        key: _skillsKey,
+                        child: const SkillsSection(),
+                      );
+                    case 3:
+                      return Container(
+                        key: _experienceKey,
+                        child: const ExperienceSection(),
+                      );
+                    case 4:
+                      return Container(
+                        key: _achievementsKey,
+                        child: const AchievementsSection(),
+                      );
+                    case 5:
+                      return Container(
+                        key: _projectsKey,
+                        child: const ProjectsSection(),
+                      );
+                    case 6:
+                      return const EducationSection();
+                    case 7:
+                      return Container(
+                        key: _contactKey,
+                        child: const ContactSection(),
+                      );
+                    case 8:
+                      return Footer(
+                        onBackToTop: () => _scrollToSection('Hero'),
+                      );
+                    default:
+                      return const SizedBox.shrink();
+                  }
+                },
               ),
       ),
     );
