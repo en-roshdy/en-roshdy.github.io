@@ -76,13 +76,8 @@ class _PortfolioHomePageState extends State<PortfolioHomePage> {
   @override
   void initState() {
     super.initState();
-    Future.delayed(const Duration(milliseconds: 300), () {
-      if (mounted) {
-        setState(() {
-          _isLoading = false;
-        });
-      }
-    });
+    // Render content immediately when engine boots
+    _isLoading = false;
   }
 
   void _scrollToSection(String section) {

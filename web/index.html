@@ -18,6 +18,7 @@
 
   <meta charset="UTF-8">
   <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Portfolio of Muhamed Roshdy Al-Abd - Senior Mobile Developer & Team Lead specializing in Native Android (Kotlin/Java) and Flutter ecosystems.">
   <meta name="keywords" content="Muhamed Roshdy, Android Developer, Mobile Team Lead, Flutter Developer, Kotlin, Clean Architecture, Jetpack Compose, Cairo Egypt">
   <meta name="author" content="Muhamed Roshdy Al-Abd">
@@ -36,18 +37,77 @@
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="favicon.png"/>
 
+  <!-- Preconnect to Google Fonts for faster font fetching -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
   <title>Muhamed Roshdy Al-Abd | Senior Mobile Developer & Team Lead</title>
   <link rel="manifest" href="manifest.json">
+
+  <style>
+    body {
+      background-color: #0F172A;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      overflow: hidden;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    }
+    #loading-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      transition: opacity 0.4s ease-out;
+    }
+    .spinner {
+      width: 48px;
+      height: 48px;
+      border: 4px solid rgba(99, 102, 241, 0.15);
+      border-top: 4px solid #6366F1;
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+    }
+    .loading-text {
+      margin-top: 20px;
+      color: #94A3B8;
+      font-size: 15px;
+      font-weight: 500;
+      letter-spacing: 0.5px;
+    }
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+  </style>
 </head>
 <body>
-  <!--
-    You can customize the "flutter_bootstrap.js" script.
-    This is useful to provide a custom configuration to the Flutter loader
-    or to give the user feedback during the initialization process.
+  <div id="loading-container">
+    <div class="spinner"></div>
+    <div class="loading-text">Loading Portfolio...</div>
+  </div>
 
-    For more details:
-    * https://docs.flutter.dev/platform-integration/web/initialization
-  -->
   <script src="flutter_bootstrap.js" async></script>
+  <script>
+    window.addEventListener('load', function() {
+      var observer = new MutationObserver(function(mutations, me) {
+        var fltView = document.querySelector('flutter-view') || document.querySelector('flt-glass-pane');
+        if (fltView) {
+          var loader = document.getElementById('loading-container');
+          if (loader) {
+            loader.style.opacity = '0';
+            setTimeout(function() {
+              if (loader.parentNode) loader.parentNode.removeChild(loader);
+            }, 400);
+          }
+          me.disconnect();
+        }
+      });
+      observer.observe(document.body, { childList: true, subtree: true });
+    });
+  </script>
 </body>
 </html>
