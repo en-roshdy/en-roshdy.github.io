@@ -9,8 +9,8 @@ class PortfolioData {
     phone: '+201061071897',
     email: 'en.muhamed.roshdy@gmail.com',
     linkedinUrl: 'https://linkedin.com/in/muhamed-roshdy-placeholder',
-    githubUrl: 'https://github.com/placeholder',
-    cvAssetPath: 'assets/cv.pdf',
+    githubUrl: 'https://github.com/en-roshdy',
+    cvAssetPath: 'cv.pdf',
   );
 
   static const String aboutSummary =

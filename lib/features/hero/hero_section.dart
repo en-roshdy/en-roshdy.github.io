@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 import '../../data/portfolio_data.dart';
 import '../../core/utils/responsive.dart';
 import '../../core/utils/url_helper.dart';
@@ -111,7 +112,11 @@ class HeroSection extends StatelessWidget {
             ),
             OutlinedButton.icon(
               onPressed: () {
-                UrlHelper.launchUrlString(hero.cvAssetPath);
+                UrlHelper.launchUrlString(
+                  hero.cvAssetPath,
+                  mode: LaunchMode.externalApplication,
+                  webOnlyWindowName: '_blank',
+                );
               },
               icon: const Icon(Icons.download_rounded),
               label: const Text('Download CV'),

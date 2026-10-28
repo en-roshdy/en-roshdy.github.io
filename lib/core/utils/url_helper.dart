@@ -1,9 +1,17 @@
 import 'package:url_launcher/url_launcher.dart';
 
 class UrlHelper {
-  static Future<void> launchUrlString(String url) async {
+  static Future<void> launchUrlString(
+    String url, {
+    LaunchMode mode = LaunchMode.externalApplication,
+    String? webOnlyWindowName = '_blank',
+  }) async {
     final Uri uri = Uri.parse(url);
-    if (!await launchUrl(uri, mode: LaunchMode.externalApplication)) {
+    if (!await launchUrl(
+      uri,
+      mode: mode,
+      webOnlyWindowName: webOnlyWindowName,
+    )) {
       throw Exception('Could not launch $url');
     }
   }
